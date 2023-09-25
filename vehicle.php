@@ -1,5 +1,6 @@
 <?php
 include "action.php";
+include "sell.php"
 class Vehicle{
 	private $color = "";
 	private $model = "";
@@ -21,6 +22,11 @@ class Vehicle{
 		$obj->stop();
 	}
 
+	public function sell(){
+		$sellObj = new Sell($this->name);
+		$sellObj->sellCar();
+	}
+
 }
 
 $car = new Vehicle("Red","Sedan","HONDA");
@@ -28,5 +34,6 @@ $car->display();
 $car->action();
 $car->action();
 //this is a new change
+$car->sell();
 
 ?>
