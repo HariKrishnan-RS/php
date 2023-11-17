@@ -1,0 +1,90 @@
+.ticket-body {
+  margin-top: 65px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: rgb(228, 228, 228);
+}
+h1 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: center;
+  color: red;
+}
+.ticketImg {
+  max-width: 230px;
+  border-radius: 10px;
+}
+.ticket {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(224, 224, 224);
+  max-width: 230px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(153, 153, 153, 0.479);
+  background-color: white;
+}
+.info {
+  display: grid;
+  grid-template: 1fr/2fr 1fr 3fr;
+}
+.info p {
+  margin: 5px;
+}
+.info p:first-child {
+  font-weight: bold;
+}
+.info p:last-child {
+  color: grey;
+}
+footer {
+  width: 100%;
+  /* position: sticky;
+  bottom: 0; */
+}
+p {
+  font-size: 13px;
+}
+.find-us-div {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+.find-us-div > div {
+  font-size: 20px;
+  padding: 25px;
+}
+
+.find-us-div div i {
+  padding-right: 0;
+  font-size: 25px;
+}
+.find-us-div div a {
+  color: white;
+  margin: 0px 5px;
+}
+.find-us-div div:last-child {
+  font-size: 19px;
+}
+.w3-link {
+  text-decoration: underline;
+  color: rgb(135, 189, 243);
+}
+.w3-link:hover {
+  color: rgb(0, 152, 0);
+}
+
+.None {
+  width: 100%;
+  height: 100% !important;
+  min-height: 280px;
+  background-color: rgb(228, 228, 228) !important;
+}
