@@ -108,7 +108,7 @@
             </li>
           </ul>
         </div>
-        <form action="" class="d-flex">
+        <form action="" class="d-flex search-form">
           <input
             placeholder="Search"
             class="form-control me-2 search-box"
@@ -116,7 +116,8 @@
             type="text"
             name="search"
           />
-          <button class="btn btn-danger">Search</button>
+          <button class="btn btn-danger red-search-btn">Search</button>
+          <i class="fa-solid fa-magnifying-glass mag-glass"></i>
         </form>
         <div class="login-div">
           <i class="fa-regular fa-user"></i>
@@ -335,6 +336,42 @@
         </div>
       </div>
     </div>
+    <!-- //////////////// -->
+
+    <div
+      class="modal fade"
+      id="myModallogout"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you Sure!</h5>
+          </div>
+          <div class="modal-body d-flex justify-content-between p-4">
+            <button
+              type="button"
+              class="btn btn-success logout-model-ok-btn"
+              data-dismiss="modal"
+            >
+              Log Out
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary logout-model-cancel-btn"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ///////////////////// -->
+
     <!-- Button trigger modal -->
     <!-- <button
       type="button"
@@ -389,8 +426,14 @@
                 <button type="submit" class="btn btn-primary" id="login-btn">
                   Login
                 </button>
+                <p class="alert alert-danger login-failed">
+                  Wrrong Details! Try again.
+                </p>
                 <span class="new-member"
-                  >New member? <a href="#">Click here</a></span
+                  >New member?
+                  <a href="register.html" id="new-member-click-here"
+                    >Click here</a
+                  ></span
                 >
               </div>
             </form>

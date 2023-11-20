@@ -1,0 +1,74 @@
+footer {
+  width: 100%;
+  /* position: sticky;
+  bottom: 0; */
+}
+p {
+  font-size: 13px;
+}
+.find-us-div {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+.find-us-div > div {
+  font-size: 20px;
+  padding: 25px;
+}
+
+.find-us-div div i {
+  padding-right: 0;
+  font-size: 25px;
+}
+.find-us-div div a {
+  color: white;
+  margin: 0px 5px;
+}
+.find-us-div div:last-child {
+  font-size: 19px;
+}
+.w3-link {
+  text-decoration: underline;
+  color: rgb(135, 189, 243);
+}
+.w3-link:hover {
+  color: rgb(0, 152, 0);
+}
+
+.None {
+  width: 100%;
+  height: 100% !important;
+  min-height: 280px;
+  background-color: rgb(228, 228, 228) !important;
+}
+.main-form {
+  max-width: 600px !important;
+  margin-top: 100px !important;
+  margin-bottom: 20px !important;
+}
+.card-body {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.199);
+  border-radius: 10px;
+}
+.heading {
+  font-size: 20px !important;
+}
+.register-btn-txt {
+  color: rgb(255, 255, 255) !important;
+}
+.account-existing {
+  justify-content: center;
+  color: rgb(250, 68, 68);
+  display: none;
+}
+.tick-img {
+  width: 170px !important;
+}
+.tick-div {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="register.css" rel="stylesheet" />
+    <title>Notification</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+      id="myStylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body class="main">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main_menu"
+          data-bs-target="#main_menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href=""
+          ><img
+            src="images/png-transparent-film-reel-cinema-film-movie-reel-thumbnail-removebg-preview.png"
+            alt=""
+            width="40"
+            height="40"
+          />
+          MovieQ</a
+        >
+
+        <div class="collapse navbar-collapse" id="main_menu">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index2.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="">
+      <div class="mask d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6 main-form">
+              <div class="card" style="border-radius: 15px">
+                <div class="card-body p-5 crd-bdy">
+                  <h2 class="text-uppercase text-center mb-4 heading">
+                    Create an account
+                  </h2>
+
+                  <form>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="first-name"
+                        >First Name</label
+                      >
+                      <input
+                        type="text"
+                        id="first-name"
+                        class="form-control form-control your-first-name"
+                      />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="last-name"
+                        >Last Name</label
+                      >
+                      <input
+                        type="text"
+                        id="last-name"
+                        class="form-control form-control your-last-name"
+                      />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="email">Your Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control form-control your-email"
+                      />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="password">Password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control form-control your-password"
+                      />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="repeat"
+                        >Repeat your password</label
+                      >
+                      <input
+                        type="password"
+                        id="repeat"
+                        class="form-control form-control your-password-repeat"
+                      />
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input
+                        class="form-check-input me-2 i-agree"
+                        type="checkbox"
+                        value=""
+                        id="check"
+                        checked
+                      />
+                      <label class="form-check-label" for="check">
+                        I agree all statements in
+                        <a href="#!" class="text-body terme-of-service"
+                          ><u>Terms of service</u></a
+                        >
+                      </label>
+                    </div>
+                    <div class="account-existing">Account existing..!</div>
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="button"
+                        class="btn btn-success register-btn-txt register-btn"
+                      >
+                        Register
+                      </button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">
+                      Have already an account?
+                      <a href="index2.html" class="fw-bold text-body login-here"
+                        ><u>Login here</u></a
+                      >
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="find-us-div">
+        <div>Find Us On</div>
+        <div>
+          <a href="https://www.facebook.com/"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.twitter.com/"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+          <a href="https://www.google.com/"
+            ><i class="fa-brands fa-google"></i
+          ></a>
+          <a href="https://www.fa-snapchat.com/"
+            ><i class="fa-brands fa-snapchat"></i
+          ></a>
+        </div>
+        <div>
+          Powered by
+          <a href="https://www.google.com" class="w3-link" target="_blank"
+            >Google</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="register.js"></script>
+  </body>
+</html>
+
+<!-- <h2 class="text-uppercase text-center mb-4 heading">
+                    Account Created
+                  </h2>
+                  <form>
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="button"
+                        class="btn btn-success Home-btn-txt Home-btn"
+                      >
+                        Home
+                      </button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">
+                      <a href="#!" class="fw-bold text-body login-here"
+                        ><u>Login here</u></a
+                      >
+                    </p>
+                  </form> -->

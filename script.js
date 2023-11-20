@@ -2,6 +2,8 @@ localStorage.setItem('tempDate', JSON.stringify('empty'));
 localStorage.setItem('tempTheater', JSON.stringify('empty'));
 localStorage.setItem('tempTime', JSON.stringify('empty'));
 localStorage.setItem('tempSeats', JSON.stringify([]));
+sessionStorage.setItem('userid', JSON.stringify(''));
+
 if (!localStorage.getItem('allTicketAry')) {
   localStorage.setItem('allTicketAry', JSON.stringify([]));
 }
@@ -156,7 +158,6 @@ movieAry.forEach((element) => {
     ' orem ipsumf do lor sit siius amet, codd d nsects etur adipisicing elit. Harum .'
   );
   a.className = 'book-tic-lnk';
-  a.href = 'bookPage.html';
   a.innerText = 'Book Ticket';
   a.id = String(movieId);
   movieId = movieId + 1;
@@ -268,31 +269,57 @@ $(document).ready(function () {
     interval: 2800,
   });
   $('.login-div').click(function () {
-    $('#loginModal').modal('show');
+    if ($('.fa-user-text').text() == 'login') {
+      $('#loginModal').modal('show');
+    } else {
+      logout();
+    }
   });
   $('#login-btn').click(function (e) {
     //fetch php page response
     e.preventDefault();
     //check email and password
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (emailRegex.test($('#email').val()) && $('#password').val().length > 7) {
       console.log('Valid email address');
       const mail = $('#email').val();
       const pass = $('#password').val();
-      fetch(`authenticate.php?mail=${mail}&pass=${pass}`, { method: 'GET' })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+
+      $.ajax({
+        url: 'authenticate.php',
+        type: 'POST',
+        data: {
+          email: mail,
+          password: pass,
+        },
+        success: function (response) {
+          if (response.trim().length == 5) {
+            // Successful login
+            console.log('Login successful');
+            successfullValidation(response.trim());
+          } else {
+            console.log('Invalid resoponse', response);
+            $('#login-btn').css('display', 'none');
+            $('.login-failed').css('display', 'block');
           }
-          return response.text();
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error('There was a problem with the fetch operation:', error);
-        });
+        },
+        error: function (error) {
+          console.error('Error:', error);
+        },
+      });
+      // fetch(`authenticate.php?mail=${mail}&pass=${pass}`, { method: 'GET' })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error('Network response was not ok');
+      //     }
+      //     return response.text();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //   })
+      //   .catch((error) => {
+      //     console.error('There was a problem with the fetch operation:', error);
+      //   });
     } else {
       if (!emailRegex.test($('#email').val())) {
         $('#email').css('backgroundColor', 'rgba(255, 198, 198, 0.685)');
@@ -303,11 +330,24 @@ $(document).ready(function () {
     }
   });
 
-  $('#email').on('keypress', function () {
+  $('#email').on('keydown', function () {
     $('#email').css('backgroundColor', 'white');
+    $('#login-btn').css('display', 'block');
+    $('.login-failed').css('display', 'none');
   });
-  $('#password').on('keypress', function () {
+  $('#password').on('keydown', function () {
     $('#password').css('backgroundColor', 'white');
+    $('#login-btn').css('display', 'block');
+    $('.login-failed').css('display', 'none');
+  });
+  $('.logout-model-ok-btn').on('click', function () {
+    $('#myModallogout').modal('hide');
+    // sessionStorage.setItem('userid', JSON.stringify(''));
+    document.cookie = 'userid=';
+    togleLoginText(false);
+  });
+  $('.logout-model-cancel-btn').on('click', function () {
+    $('#myModallogout').modal('hide');
   });
 });
 
@@ -351,3 +391,35 @@ function findLocation() {
     }
   );
 }
+function successfullValidation(userid) {
+  $('#loginModal').modal('hide');
+  // sessionStorage.setItem('userid', JSON.stringify(userid));
+  document.cookie = 'userid=' + userid;
+  togleLoginText(true);
+}
+function togleLoginText(state) {
+  if (state) {
+    $('.fa-user-text').text('logout');
+  } else {
+    $('.fa-user-text').text('login');
+  }
+}
+function logout() {
+  $('#myModallogout').modal('show');
+}
+$('.book-tic-lnk').on('click', function (e) {
+  if (document.cookie.length > 7) {
+    window.location.href = 'bookPage.html';
+  } else {
+    $('.login-div').trigger('click');
+  }
+});
+if (document.cookie.length > 7) {
+  togleLoginText(true);
+}
+
+// $('#new-member-click-here').on('click', register);
+
+// function register(e) {
+//   // e.preventDefault();
+// }
