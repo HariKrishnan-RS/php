@@ -40,6 +40,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
+    <!-- ///////////////////////////////// -->
+
+    <!-- ????????????????????????????????? -->
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div class="noti-div" id="notif-div">
         <!-- <div class="tic">New Ticket</div>
@@ -441,8 +444,100 @@
         </div>
       </div>
     </div>
+    <div
+      class="modal fade"
+      id="addreview"
+      tabindex="-1"
+      aria-labelledby="addreviewlable"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addreviewlable">Add Review</h5>
+            <button
+              type="button"
+              class="btn-close x-btn"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="reviewarea" class="form-label">Type here</label>
+                <textarea
+                  maxlength="200"
+                  class="form-control"
+                  id="reviewarea"
+                  aria-describedby="review"
+                  placeholder="Your review"
+                ></textarea>
+              </div>
 
+              <div class="login-footer">
+                <button type="submit" class="btn btn-primary" id="addbtn">
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /////////////////////////// -->
+    <div class="blur-box">
+      <!-- <div class="card review-card">
+        <img class="review-img" src="movies-img/m5.jpg" alt="movie-imgd" />
+        <div class="card-body review-card-body">
+          <h1 class="card-title review-card-title">Lonely Time</h1>
+          <p class="card-text review-card-text">
+            <b>L</b> orem ipsumf do lor sit sis amet, codd d nsects etur
+            adipisicing elit. Harum .
+          </p>
+          <a class="book-tic-lnk review-card-btn" id="sas">Book Ticket</a>
+        </div>
+        <div class="scrool">
+          <div class="single-cell">
+            <div class="round-usr-img-div">
+              <img
+                src="images/round-user.jpg"
+                class="round-usr"
+                alt="usr-img"
+                width="40px"
+              />
+              <p class="cell-heading">Tanjiro Kamado</p>
+            </div>
+            <p class="cell-review">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Blanditiis accusamus
+            </p>
+          </div>
+          <div class="single-cell">
+            <div class="round-usr-img-div">
+              <img
+                src="images/round-user.jpg"
+                class="round-usr"
+                alt="usr-img"
+                width="40px"
+              />
+              <p class="cell-heading">Tanjiro Kamado</p>
+            </div>
+
+            <p class="cell-review">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Blanditiis accusamus
+            </p>
+          </div>
+        </div>
+
+        <div class="review-footer">
+          <i class="fa-solid fa-plus review-icon"></i>
+          <i class="fa-regular fa-trash-can review-icon"></i>
+        </div>
+      </div> -->
+    </div>
     <!-- Bootstrap JS -->
-    <script src="script.js"></script>
   </body>
+  <script src="script.js"></script>
 </html>

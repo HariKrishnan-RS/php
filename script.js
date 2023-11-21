@@ -172,12 +172,17 @@ const mainBar = document.querySelector('.main-bar');
 const div = document.createElement('div');
 div.className = 'None';
 mainBar.appendChild(div);
+let x = 0;
 ////////////////////////////////
 function closed(e) {
   if (!(e.target.className == 'fa-regular fa-bell n2')) {
     const elm = document.getElementById('notif-div');
     $(elm).slideUp(150);
     flag = 0;
+  }
+  if (e.target.className == 'blur-box') {
+    $('.blur-box').css('display', 'none');
+    x = 0;
   }
 }
 document.addEventListener('click', closed);
@@ -349,7 +354,17 @@ $(document).ready(function () {
   $('.logout-model-cancel-btn').on('click', function () {
     $('#myModallogout').modal('hide');
   });
+  $('.card').on('click', function (e) {
+    if (e.target.className != 'book-tic-lnk') {
+      showBlur($(this));
+    }
+  });
 });
+
+function reviewModel() {
+  $('#addreview').modal('show');
+  console.log('asasdasadsad');
+}
 
 function findLocation() {
   let latitude = 0;
@@ -414,12 +429,151 @@ $('.book-tic-lnk').on('click', function (e) {
     $('.login-div').trigger('click');
   }
 });
+
 if (document.cookie.length > 7) {
   togleLoginText(true);
 }
+let div_str = '';
+let inhtml = '';
+function showBlur(card) {
+  //create review box
+  // console.log($(card));
+  var imgSrc = $(card).find('img').attr('src');
+  var mv_name = $(card).find('h1').text();
+  var dics = $(card).find('p').text();
+  var book_id = $(card).find('a').attr('id');
+  //get reviws for this movie id from db
+  $.ajax({
+    url: 'php_getreview.php',
+    type: 'POST',
+    data: {
+      id: book_id,
+    },
+    success: function (response) {
+      if (response.length > 10) {
+        let value_ary = response.split('|');
+        div_str = '';
+        inhtml = '';
+        value_ary.pop();
+        value_ary.forEach(function (element) {
+          element = element.split('-');
+          div_str += `<div class="single-cell">
+            <div class="round-usr-img-div">
+              <img
+                src="images/round-user.jpg"
+                class="round-usr"
+                alt="usr-img"
+                width="40px"
+              />
+              <p class="cell-heading">${element[1]} ${element[2]}
+              </p>
+            </div>
+            <p class="cell-review">${element[3]}
+            </p>
+          </div>
+              `;
+          console.log(div_str);
+        });
+      } else {
+        console.log('Invalid resoponse', response);
+      }
+    },
+    error: function (error) {
+      console.error('Error:', error);
+    },
+  });
+  setTimeout(function () {
+    console.log('Delayed message after 2000 milliseconds');
+    inhtml = '';
+    inhtml = `
+        <div class="card review-card">
+        <img class="review-img" src="${imgSrc}" alt="movie-imgd" />
+        <div class="card-body review-card-body">
+          <h1 class="card-title review-card-title">${mv_name}</h1>
+          <p class="card-text review-card-text">
+            ${dics}.
+          </p>
+          <a onclick="gotobookpage()" class="book-tic-lnk review-card-btn" id="${book_id}">Book Ticket</a>
+        </div>
+        
+        <div class="scrool">
+          ${div_str}
+          <div class="single-cell">
+            <div class="round-usr-img-div">
+              <img
+                src="images/round-user.jpg"
+                class="round-usr"
+                alt="usr-img"
+                width="40px"
+              />
+              <p class="cell-heading">Tanjiro Kamado</p>
+            </div>
+            <p class="cell-review">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Blanditiis accusamus
+            </p>
+          </div>
 
-// $('#new-member-click-here').on('click', register);
+        </div>
 
-// function register(e) {
-//   // e.preventDefault();
-// }
+        <div class="review-footer">
+          <i class="fa-solid fa-plus review-icon"></i>
+          
+        </div>
+      </div>
+  `;
+    $('.blur-box').html(inhtml);
+    $('.blur-box').fadeIn(150);
+    $('.blur-box').css('display', 'flex');
+    $('.review-card-btn').on('click', function (e) {
+      if (document.cookie.length > 7) {
+        clicked(e);
+        window.location.href = 'bookPage.html';
+      } else {
+        $('.login-div').trigger('click');
+      }
+    });
+    $('.review-icon').on('click', reviewModel);
+    $('#addbtn').on('click', addreview);
+  }, 40);
+
+  x = 1;
+  div_str = '';
+}
+function gotobookpage() {}
+function addreview(e) {
+  e.preventDefault();
+  let text = $('#reviewarea').val();
+  let cus_id = document.cookie;
+  cus_id = cus_id.split('=')[1];
+  let movie_id = $('.review-card-btn').attr('id');
+  if (text != '' && /^[a-zA-Z\s]*$/.test(text)) {
+    //add review to db
+
+    $.ajax({
+      url: 'php_addreview.php',
+      type: 'POST',
+      data: {
+        review: text,
+        id: cus_id,
+        movie_id: movie_id,
+      },
+      success: function (response) {
+        if (response) {
+          $(function () {
+            $(document).ready(function () {
+              $('.x-btn').click();
+            });
+          });
+        } else {
+          console.log('Invalid resoponse', response);
+        }
+      },
+      error: function (error) {
+        console.error('Error:', error);
+      },
+    });
+  } else {
+    alert('Only letters allowed!');
+  }
+}
